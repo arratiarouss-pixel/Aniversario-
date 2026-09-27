@@ -171,7 +171,18 @@ const msgs=[
 "Eres mi compañero de aventuras.","Eres mi mejor coincidencia."
 ];
 const answers={1:null,2:"",3:"",4:"",5:""};
-function go(id){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo(0,0)}
+function go(id){
+ document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+ document.getElementById(id).classList.add('active');
+ window.scrollTo(0,0);
+
+ if(id==='routes'){
+  setTimeout(()=>{
+   scratchReady=false;
+   revealScratch();
+  },100);
+ }
+}
 function spawnMessages(){
  const f=document.getElementById('heartField');f.innerHTML='';
  [...msgs].sort(()=>Math.random()-.5).forEach((m,i)=>{
@@ -288,7 +299,8 @@ function makeBalls(){
  const b=document.getElementById('balls');b.innerHTML='';
  for(let i=0;i<9;i++){const x=document.createElement('button');x.className='mini-poke';x.setAttribute('aria-label','Pokébola '+(i+1));x.onclick=()=>{document.getElementById('surprise').textContent='TE AMOOOO 🫂❤️';};b.appendChild(x)}
 }
-makeBalls();
+revealScratch();
+ makeBalls();
 </script>
 </body>
 </html>
