@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Feliz aniversario, mi osito ❤️</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:system-ui,-apple-system,Segoe UI,sans-serif;background:#101426;color:#fff}
+body{overflow-x:hidden}.page{min-height:100vh;display:none;position:relative;padding:24px 16px 70px;animation:fade .35s ease}.page.active{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.back{position:fixed;top:14px;left:14px;z-index:30;border:0;border-radius:999px;background:#ffffff22;color:#fff;padding:9px 13px;font-size:18px;backdrop-filter:blur(8px);cursor:pointer}
+.cover{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;background:
+radial-gradient(circle at 25% 20%,#ffb36b55 0 5%,transparent 28%),
+linear-gradient(#302b61 0%,#db725e 45%,#f8bb79 62%,#17243d 63%,#09101f 100%)}
+.card{max-width:700px;width:100%;margin:auto;padding:28px;border-radius:28px;background:#10162ccc;border:1px solid #ffffff2a;box-shadow:0 20px 60px #0008;backdrop-filter:blur(9px)}
+.pixel-hearts{font-size:30px;letter-spacing:8px;filter:drop-shadow(0 5px 3px #0006);margin-bottom:10px}
+h1{font-size:clamp(30px,8vw,58px);margin:8px 0 12px}.subtitle{opacity:.88}
+.menu{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:28px}
+.menu button{min-height:105px;border:0;border-radius:22px;background:#ffffff16;color:#fff;font-size:48px;cursor:pointer;box-shadow:inset 0 0 0 1px #ffffff22;transition:.2s}
+.menu button:hover{transform:translateY(-4px);background:#ffffff25}.small{font-size:14px;display:block;margin-top:5px}
+.section{max-width:850px;margin:0 auto}.panel{background:#151c34;border:1px solid #ffffff18;border-radius:24px;padding:22px;box-shadow:0 16px 40px #0005}
+h2{font-size:30px;margin-top:0}.letter{white-space:pre-line;line-height:1.75;font-size:17px}.heart-field{position:relative;min-height:70vh;overflow:hidden;border-radius:24px;background:radial-gradient(circle,#35255f,#101426 65%);border:1px solid #ffffff18}
+.float{position:absolute;animation:rise linear forwards;user-select:none;cursor:default}.float.msg{font-size:16px;background:#ffffff12;border:1px solid #ffffff22;border-radius:16px;padding:9px 12px;max-width:230px}
+@keyframes rise{from{transform:translateY(20px) rotate(-3deg);opacity:0}10%{opacity:1}to{transform:translateY(-110vh) rotate(5deg);opacity:0}}
+.poke{width:130px;height:130px;border-radius:50%;margin:20px auto;position:relative;background:linear-gradient(#ef4a4a 0 47%,#222 47% 53%,#f4f4f4 53%);border:8px solid #171717;box-shadow:0 12px 25px #0006;cursor:pointer}.poke:after{content:"";position:absolute;width:38px;height:38px;background:#fff;border:8px solid #222;border-radius:50%;left:50%;top:50%;transform:translate(-50%,-50%)}
+.routes{display:grid;gap:14px}.route{background:#ffffff0d;border:1px solid #ffffff18;border-radius:20px;padding:17px}.route h3{margin:0 0 8px}.choice button,.send{display:block;width:100%;margin:8px 0;padding:12px;border:0;border-radius:14px;background:#ffffff16;color:#fff;text-align:left;cursor:pointer}.choice button:hover{background:#ffffff28}
+textarea{width:100%;min-height:100px;border-radius:14px;border:1px solid #ffffff2a;background:#0c1122;color:#fff;padding:12px;font:inherit;resize:vertical}
+.send{text-align:center;background:#7b4dff;font-weight:700}.send:disabled{opacity:.55;cursor:not-allowed}
+.reaction{min-height:28px;margin:7px 0;font-weight:700}.scratcher{position:relative;border-radius:18px;overflow:hidden;background:#e8e8e8;color:#171717;min-height:260px;padding:24px;margin-top:12px}.scratcher .hidden{filter:blur(12px);user-select:none}.scratcher .cover{position:absolute;inset:0;min-height:0;background:repeating-linear-gradient(135deg,#9a9a9a 0 10px,#b7b7b7 10px 20px);color:#222;cursor:grab;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:20px}
+.scratcher.revealed .cover{display:none}.book{max-width:700px;margin:30px auto;perspective:1000px}.bookpage{background:#fff9df;color:#312d27;min-height:430px;border-radius:8px 22px 22px 8px;padding:34px;box-shadow:0 20px 45px #0008;line-height:1.7}.bookpage h2{color:#a85b24}.pokeballs{display:flex;flex-wrap:wrap;gap:15px;justify-content:center;margin-top:25px}.mini-poke{width:66px;height:66px;border-radius:50%;border:5px solid #111;background:linear-gradient(#ef4a4a 0 45%,#222 45% 55%,#f4f4f4 55%);position:relative;cursor:pointer}.mini-poke:after{content:"";position:absolute;width:20px;height:20px;background:#fff;border:5px solid #222;border-radius:50%;left:50%;top:50%;transform:translate(-50%,-50%)}.surprise{text-align:center;font-size:34px;font-weight:900;min-height:50px;margin-top:25px}
+.loading{text-align:center;font-size:25px;padding:80px 20px}.spinner{width:55px;height:55px;border:6px solid #ffffff22;border-top-color:#fff;border-radius:50%;animation:spin .8s linear infinite;margin:25px auto}@keyframes spin{to{transform:rotate(360deg)}}
+.note{font-size:13px;opacity:.7;margin-top:15px}.error{color:#ffb3b3}.ok{color:#9cffba}
+</style>
+</head>
+<body>
+
+<section id="home" class="page active cover">
+ <div class="card">
+  <div class="pixel-hearts">💗 💖 💗 💖 💗</div>
+  <h1>FELIZ ANIVERSARIO<br>MI OSITO 😍</h1>
+  <p class="subtitle">Seis años de nuestra historia… y todavía quedan muchos niveles por jugar. 🎮❤️</p>
+  <div class="menu">
+   <button onclick="go('letter')">💌<span class="small">Carta</span></button>
+   <button onclick="go('hearts')">❤️<span class="small">Todo de ti</span></button>
+   <button onclick="go('routes')">🔴⚪<span class="small">Pokéaventura</span></button>
+  </div>
+ </div>
+</section>
+
+<section id="letter" class="page">
+ <button class="back" onclick="go('home')">←</button><div class="section panel">
+ <h2>💌 Para mi lindo príncipe</h2>
+ <div class="letter">Mi lindo príncipe hoy no quiero celebrar solamente una fecha, quiero celebrar todo lo que hemos vivido para llegar hasta aquí.
+
+Seis años pueden parecer mucho tiempo, pero cuando pienso en nosotros siento que todavía queda mucho camino por delante. Hemos cambiado, hemos crecido, hemos aprendido y seguramente no somos exactamente las mismas personas que éramos al principio pero... hay algo que sigue siendo igual... seguimos aquí. ❤️
+
+Gracias por cada momento bonito, por cada risa, por cada abrazo, por las conversaciones que se quedaron en mi memoria y también por aquellos momentos que no fueron fáciles y que nos enseñaron a conocernos mejor.
+
+Si pudiera volver al comienzo de nuestra historia, sabiendo todo lo que vendría después, volvería a elegirte... sí, volvería a elegirte.
+
+Porque entre tantas personas, tantos caminos y tantas posibilidades me gusta pensar que nuestras vidas encontraron la manera de coincidir... no sé exactamente qué nos espera en los próximos años. Pero sí sé que quiero seguir descubriéndolo contigo.
+
+Feliz aniversario mi amor 😍</div>
+ </div>
+</section>
+
+<section id="hearts" class="page">
+ <button class="back" onclick="go('home')">←</button><div class="section">
+ <div class="panel"><h2>❤️ Todas estas cosas me hacen pensar en ti</h2><p>Toca el corazón y deja que aparezcan desordenadas. 💕</p><button class="send" onclick="spawnMessages()">❤️ ¡Haz aparecer mis palabras!</button></div>
+ <div id="heartField" class="heart-field"></div>
+ </div>
+</section>
+
+<section id="routes" class="page">
+ <button class="back" onclick="go('home')">←</button><div class="section">
+ <div class="panel">
+  <h2>🔴⚪ La ruta de nuestra historia</h2>
+  <p>Completa las rutas. Cada respuesta genera una reacción. Puedes escribir con tus propias palabras. ❤️</p>
+  <div class="routes">
+   <div class="route"><h3>🌱 Ruta 1: cómo empezó todo</h3>
+    <div class="choice">
+     <button onclick="choice(1,'A','Una charla')">A) Una charla</button>
+     <button onclick="choice(1,'B','Por Facebook')">B) Por Facebook</button>
+     <button onclick="choice(1,'C','En el colegio')">C) En el colegio</button>
+     <button onclick="choice(1,'D','Todas las anteriores')">D) Todas las anteriores</button>
+    </div><div id="r1" class="reaction"></div>
+   </div>
+   <div class="route"><h3>🌊 Ruta 2: escribe nuestros mejores recuerdos</h3>
+    <textarea id="a2" placeholder="Escribe aquí tus recuerdos..."></textarea><button class="send" onclick="sendAnswer(2)">Enviar 💙</button><div id="r2" class="reaction"></div>
+   </div>
+   <div class="route"><h3>🔥 Ruta 3: momentos difíciles</h3>
+    <div class="scratcher" id="scratch"><div class="hidden">Si alguna vez volvemos a atravesar una etapa complicada, quiero que recuerdes algo:
+No tienes que ser perfecto para que te ame. No tenemos que tener días perfectos para que nuestra historia siga siendo especial.
+Después de todo lo que hemos vivido, sigo aquí.</div><div class="cover" onclick="revealScratch()">✨ Rasca/toca para descubrir la carta ✨</div></div>
+    <textarea id="a3" placeholder="Después de leerla, escribe algo para nuestra historia..."></textarea><button class="send" onclick="sendAnswer(3)">Enviar 🔥</button><div id="r3" class="reaction"></div>
+   </div>
+   <div class="route"><h3>⚡ Ruta 4: cosas que nos hacen reír 🤭</h3>
+    <textarea id="a4" placeholder="Respuesta libre..."></textarea><button class="send" onclick="sendAnswer(4)">Enviar ⚡</button><div id="r4" class="reaction"></div>
+   </div>
+   <div class="route"><h3>🌟 Liga Pokémon: el aniversario</h3>
+    <p>Describe qué es lo que más te gusta de nuestra relación.</p>
+    <textarea id="a5" placeholder="Respuesta libre..."></textarea><button class="send" onclick="sendAnswer(5)">Enviar 🌟</button><div id="r5" class="reaction"></div>
+   </div>
+  </div>
+  <button class="send" id="finishBtn" onclick="finishMission()">🏆 Enviar todo y completar misión</button>
+  <div id="routeStatus" class="note"></div>
+ </div></div>
+</section>
+
+<section id="loading" class="page"><div class="loading"><div class="spinner"></div><div>Cargando...</div><p>Guardando nuestra aventura ❤️</p></div></section>
+
+<section id="final1" class="page">
+ <button class="back" onclick="go('routes')">←</button><div class="book"><div class="bookpage">
+ <h2>🏆 MISIÓN COMPLETADA</h2>
+ <p>Después de 6 años, hemos recorrido muchísimas rutas, superado obstáculos, vivido momentos increíbles y creado recuerdos que solo nosotros conocemos.</p>
+ <p>Si nuestra historia fuera un juego, no elegiría cambiar de equipo ni comenzar otra aventura.</p>
+ <button class="send" onclick="go('final2')">Pasar página →</button>
+ </div></div>
+</section>
+
+<section id="final2" class="page">
+ <button class="back" onclick="go('final1')">←</button><div class="book"><div class="bookpage">
+ <h2>❤️ Siguiente nivel</h2><p>Y esto no es el final de la aventura...</p><p><b>Es solo el siguiente nivel.</b> 🎮❤️</p>
+ <p>Elige una Pokébola al azar. 👀</p>
+ <div class="pokeballs" id="balls"></div><div id="surprise" class="surprise"></div>
+ </div></div>
+</section>
+
+<script>
+const EMAIL_ENDPOINT = "PEGA_AQUI_LA_URL_DE_TU_GOOGLE_APPS_SCRIPT";
+const msgs=[
+"Te amo al infinito","Me encantas.","Eres mi persona favorita.","Me encanta todo de ti.",
+"Me encanta tu forma de ser.","Me encanta tu manera de hacerme reír.","Me encanta cómo me miras.",
+"Me encanta escucharte.","Me encanta pasar tiempo contigo.","Me encanta cada pequeño detalle de ti.",
+"Amo tus ocurrencias.","Amo tus abrazos.","Amo tu sonrisa.","Amo tu forma de quererme.",
+"Estoy orgullosa de ti.","Eres increíble.","Quiero seguir eligiéndote.","Quiero seguir caminando a tu lado.",
+"Te elegiría una y otra vez.","Eres mi lugar favorito.","Eres mi persona especial.",
+"Eres mi compañero de aventuras.","Eres mi mejor coincidencia."
+];
+const answers={1:null,2:"",3:"",4:"",5:""};
+function go(id){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo(0,0)}
+function spawnMessages(){
+ const f=document.getElementById('heartField');f.innerHTML='';
+ [...msgs].sort(()=>Math.random()-.5).forEach((m,i)=>{
+  const x=document.createElement('div');x.className='float msg';x.textContent='❤️ '+m;
+  x.style.left=(3+Math.random()*80)+'%';x.style.bottom='-20px';x.style.animationDuration=(7+Math.random()*8)+'s';x.style.animationDelay=(i*.18)+'s';f.appendChild(x);
+ });
+}
+function react(el,type){
+ const map={good:'⚡ ¡Pikachu está sorprendido!',free:'🔥 ¡Charmander dice que esa respuesta estuvo interesante!',wait:'💧 Squirtle está pensando...',bad:'👀 Eevee no está convencido...'};
+ el.textContent=map[type]||map.free;
+}
+function choice(n,k,v){
+ answers[n]=v; const el=document.getElementById('r1');
+ react(el,k==='D'?'good':'bad'); 
+ if(k==='D') localStorage.setItem('r1',v);
+}
+function sendAnswer(n){
+ const t=document.getElementById('a'+n).value.trim(), el=document.getElementById('r'+n);
+ if(!t){react(el,'wait');return}
+ answers[n]=t; localStorage.setItem('a'+n,t); react(el,'free');
+ const payload={timestamp:new Date().toISOString(),tipo:'respuesta individual',ruta:n,respuesta:t};
+ if(EMAIL_ENDPOINT.startsWith('http')){
+   fetch(EMAIL_ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
+     .then(()=>{el.textContent += '  ✓ Guardada';})
+     .catch(()=>{el.textContent += '  ✓ Guardada en este dispositivo';});
+ } else {
+   el.textContent += '  ✓ Guardada en este dispositivo';
+ }
+}
+function revealScratch(){document.getElementById('scratch').classList.add('revealed')}
+function finishMission(){
+ if(!answers[1]){document.getElementById('routeStatus').textContent='Completa la Ruta 1 antes de terminar.';return}
+ [2,3,4,5].forEach(n=>{answers[n]=document.getElementById('a'+n).value.trim()});
+ const status=document.getElementById('routeStatus');status.textContent='Enviando respuestas...';
+ document.getElementById('finishBtn').disabled=true;
+ const payload={timestamp:new Date().toISOString(),ruta1:answers[1],ruta2:answers[2],ruta3:answers[3],ruta4:answers[4],liga:answers[5]};
+ localStorage.setItem('anniversaryAnswers',JSON.stringify(payload));
+ if(EMAIL_ENDPOINT.startsWith('http')){
+  fetch(EMAIL_ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
+   .then(()=>{status.innerHTML='<span class="ok">¡Respuestas enviadas! ❤️</span>';setTimeout(()=>go('loading'),900);setTimeout(()=>go('final1'),3000)})
+   .catch(()=>{status.innerHTML='<span class="error">No se pudo contactar al correo. Las respuestas quedaron guardadas en este dispositivo.</span>';document.getElementById('finishBtn').disabled=false});
+ }else{
+  status.innerHTML='<span class="error">Falta configurar el correo. Las respuestas quedaron guardadas en este dispositivo.</span>';
+  document.getElementById('finishBtn').disabled=false;
+ }
+}
+function makeBalls(){
+ const b=document.getElementById('balls');b.innerHTML='';
+ for(let i=0;i<9;i++){const x=document.createElement('button');x.className='mini-poke';x.setAttribute('aria-label','Pokébola '+(i+1));x.onclick=()=>{document.getElementById('surprise').textContent='TE AMOOOO 🫂❤️';};b.appendChild(x)}
+}
+makeBalls();
+</script>
+</body>
+</html>
