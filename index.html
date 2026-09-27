@@ -246,35 +246,78 @@ function revealScratch(){
   ctx.stroke();
  }
 
- let scratching=false;
+ let scratchReady=false;
 
- function scratch(e){
-  if(!scratching)return;
+function revealScratch(){
 
-  const r=canvas.getBoundingClientRect();
-  const x=e.clientX-r.left;
-  const y=e.clientY-r.top;
+ const canvas=document.getElementById('scratchCanvas');
+ if(!canvas)return;
+
+ const ctx=canvas.getContext('2d');
+
+ const rect=canvas.getBoundingClientRect();
+
+ if(rect.width===0 || rect.height===0)return;
+
+ canvas.width=rect.width;
+ canvas.height=rect.height;
+
+ ctx.globalCompositeOperation='source-over';
+
+ ctx.fillStyle='#a8a8a8';
+ ctx.fillRect(0,0,canvas.width,canvas.height);
+
+ ctx.strokeStyle='#777';
+ ctx.lineWidth=2;
+
+ for(let x=-canvas.height;x<canvas.width+canvas.height;x+=20){
+  ctx.beginPath();
+  ctx.moveTo(x,0);
+  ctx.lineTo(x+canvas.height,canvas.height);
+  ctx.stroke();
+ }
+
+ function borrar(x,y){
 
   ctx.globalCompositeOperation='destination-out';
+
   ctx.beginPath();
-  ctx.arc(x,y,28,0,Math.PI*2);
+  ctx.arc(x,y,30,0,Math.PI*2);
   ctx.fill();
  }
 
+ function mover(e){
+
+  e.preventDefault();
+
+  const r=canvas.getBoundingClientRect();
+
+  const x=e.clientX-r.left;
+  const y=e.clientY-r.top;
+
+  borrar(x,y);
+ }
+
  canvas.addEventListener('pointerdown',e=>{
-  scratching=true;
+  e.preventDefault();
   canvas.setPointerCapture(e.pointerId);
-  scratch(e);
+
+  const r=canvas.getBoundingClientRect();
+
+  borrar(
+   e.clientX-r.left,
+   e.clientY-r.top
+  );
  });
 
- canvas.addEventListener('pointermove',scratch);
+ canvas.addEventListener('pointermove',mover);
 
- canvas.addEventListener('pointerup',()=>{
-  scratching=false;
+ canvas.addEventListener('pointerup',e=>{
+  e.preventDefault();
  });
 
- canvas.addEventListener('pointercancel',()=>{
-  scratching=false;
+ canvas.addEventListener('pointercancel',e=>{
+  e.preventDefault();
  });
 
  scratchReady=true;
