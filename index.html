@@ -192,23 +192,30 @@ function spawnMessages(){
 
  f.innerHTML='';
 
- [...msgs].sort(()=>Math.random()-.5).forEach((m,i)=>{
+ const shuffled=[...msgs].sort(()=>Math.random()-.5);
 
-  const x=document.createElement('div');
+ shuffled.forEach((m,i)=>{
 
-  x.className='float msg';
+  setTimeout(()=>{
 
-  x.textContent='❤️ '+m;
+   const x=document.createElement('div');
 
-  x.style.left=(3+Math.random()*80)+'%';
+   x.className='float msg center-msg';
 
-  x.style.bottom='-20px';
+   x.textContent='❤️ '+m;
 
-  x.style.animationDuration=(7+Math.random()*8)+'s';
+   x.style.left='50%';
+   x.style.bottom='10px';
 
-  x.style.animationDelay=(i*.18)+'s';
+   x.style.animationDuration='12s';
 
-  f.appendChild(x);
+   f.appendChild(x);
+
+   setTimeout(()=>{
+    x.remove();
+   },12000);
+
+  },i*3500);
 
  });
 }
