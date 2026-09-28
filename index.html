@@ -161,6 +161,7 @@ Feliz aniversario mi amor 😍</div>
 
 <script>
 const EMAIL_ENDPOINT = "PEGA_AQUI_LA_URL_DE_TU_GOOGLE_APPS_SCRIPT";
+
 const msgs=[
 "Te amo al infinito","Me encantas.","Eres mi persona favorita.","Me encanta todo de ti.",
 "Me encanta tu forma de ser.","Me encanta tu manera de hacerme reír.","Me encanta cómo me miras.",
@@ -170,168 +171,264 @@ const msgs=[
 "Te elegiría una y otra vez.","Eres mi lugar favorito.","Eres mi persona especial.",
 "Eres mi compañero de aventuras.","Eres mi mejor coincidencia."
 ];
+
 const answers={1:null,2:"",3:"",4:"",5:""};
+
+let scratchReady=false;
+
 function go(id){
- document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+
+ document.querySelectorAll('.page').forEach(p=>{
+  p.classList.remove('active');
+ });
+
  document.getElementById(id).classList.add('active');
+
  window.scrollTo(0,0);
 
  if(id==='routes'){
-  setTimeout(()=>{
-   scratchReady=false;
-   revealScratch();
-  },100);
+  setTimeout(initScratch,100);
  }
 }
+
 function spawnMessages(){
- const f=document.getElementById('heartField');f.innerHTML='';
+
+ const f=document.getElementById('heartField');
+
+ f.innerHTML='';
+
  [...msgs].sort(()=>Math.random()-.5).forEach((m,i)=>{
-  const x=document.createElement('div');x.className='float msg';x.textContent='❤️ '+m;
-  x.style.left=(3+Math.random()*80)+'%';x.style.bottom='-20px';x.style.animationDuration=(7+Math.random()*8)+'s';x.style.animationDelay=(i*.18)+'s';f.appendChild(x);
+
+  const x=document.createElement('div');
+
+  x.className='float msg';
+
+  x.textContent='❤️ '+m;
+
+  x.style.left=(3+Math.random()*80)+'%';
+
+  x.style.bottom='-20px';
+
+  x.style.animationDuration=(7+Math.random()*8)+'s';
+
+  x.style.animationDelay=(i*.18)+'s';
+
+  f.appendChild(x);
+
  });
 }
+
 function react(el,type){
- const map={good:'⚡ ¡Pikachu está sorprendido!',free:'🔥 ¡Charmander dice que esa respuesta estuvo interesante!',wait:'💧 Squirtle está pensando...',bad:'👀 Eevee no está convencido...'};
+
+ const map={
+  good:'⚡ ¡Pikachu está sorprendido!',
+  free:'🔥 ¡Charmander dice que esa respuesta estuvo interesante!',
+  wait:'💧 Squirtle está pensando...',
+  bad:'👀 Eevee no está convencido...'
+ };
+
  el.textContent=map[type]||map.free;
 }
+
 function choice(n,k,v){
- answers[n]=v; const el=document.getElementById('r1');
- react(el,k==='D'?'good':'bad'); 
- if(k==='D') localStorage.setItem('r1',v);
-}
-function sendAnswer(n){
- const t=document.getElementById('a'+n).value.trim(), el=document.getElementById('r'+n);
- if(!t){react(el,'wait');return}
- answers[n]=t; localStorage.setItem('a'+n,t); react(el,'free');
- const payload={timestamp:new Date().toISOString(),tipo:'respuesta individual',ruta:n,respuesta:t};
- if(EMAIL_ENDPOINT.startsWith('http')){
-   fetch(EMAIL_ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
-     .then(()=>{el.textContent += '  ✓ Guardada';})
-     .catch(()=>{el.textContent += '  ✓ Guardada en este dispositivo';});
- } else {
-   el.textContent += '  ✓ Guardada en este dispositivo';
+
+ answers[n]=v;
+
+ const el=document.getElementById('r1');
+
+ react(el,k==='D'?'good':'bad');
+
+ if(k==='D'){
+  localStorage.setItem('r1',v);
  }
 }
-let scratchReady=false;
 
-function revealScratch(){
+function sendAnswer(n){
+
+ const textarea=document.getElementById('a'+n);
+
+ const el=document.getElementById('r'+n);
+
+ if(!textarea || !el)return;
+
+ const t=textarea.value.trim();
+
+ if(!t){
+  react(el,'wait');
+  return;
+ }
+
+ answers[n]=t;
+
+ localStorage.setItem('a'+n,t);
+
+ react(el,'free');
+
+ el.textContent+='  ✓ Guardada en este dispositivo';
+}
+
+function initScratch(){
+
  if(scratchReady)return;
 
  const canvas=document.getElementById('scratchCanvas');
+
  if(!canvas)return;
 
- const ctx=canvas.getContext('2d');
  const rect=canvas.getBoundingClientRect();
 
- if(!rect.width || !rect.height)return;
-
- canvas.width=rect.width*2;
- canvas.height=rect.height*2;
-
- ctx.scale(2,2);
-
- const w=rect.width;
- const h=rect.height;
-
- ctx.fillStyle='#a8a8a8';
- ctx.fillRect(0,0,w,h);
-
- ctx.strokeStyle='#777';
- ctx.lineWidth=2;
-
- for(let x=-h;x<w+h;x+=20){
-  ctx.beginPath();
-  ctx.moveTo(x,0);
-  ctx.lineTo(x+h,h);
-  ctx.stroke();
- }
-
- let scratchReady=false;
-
-function revealScratch(){
-
- const canvas=document.getElementById('scratchCanvas');
- if(!canvas)return;
+ if(rect.width===0 || rect.height===0)return;
 
  const ctx=canvas.getContext('2d');
- const rect=canvas.getBoundingClientRect();
-
- if(!rect.width || !rect.height)return;
 
  canvas.width=rect.width;
  canvas.height=rect.height;
 
- ctx.globalCompositeOperation='source-over';
-
  ctx.fillStyle='#a8a8a8';
+
  ctx.fillRect(0,0,canvas.width,canvas.height);
 
  ctx.strokeStyle='#777';
+
  ctx.lineWidth=2;
 
  for(let x=-canvas.height;x<canvas.width+canvas.height;x+=20){
+
   ctx.beginPath();
+
   ctx.moveTo(x,0);
+
   ctx.lineTo(x+canvas.height,canvas.height);
+
   ctx.stroke();
  }
 
- function borrar(x,y){
+ function scratch(e){
+
+  e.preventDefault();
+
+  if(e.buttons!==1 && e.type==='pointermove')return;
+
+  const r=canvas.getBoundingClientRect();
+
+  const x=e.clientX-r.left;
+
+  const y=e.clientY-r.top;
+
   ctx.globalCompositeOperation='destination-out';
+
   ctx.beginPath();
-  ctx.arc(x,y,30,0,Math.PI*2);
+
+  ctx.arc(x,y,32,0,Math.PI*2);
+
   ctx.fill();
  }
 
  canvas.addEventListener('pointerdown',function(e){
+
   e.preventDefault();
 
   canvas.setPointerCapture(e.pointerId);
 
-  const r=canvas.getBoundingClientRect();
-
-  borrar(
-   e.clientX-r.left,
-   e.clientY-r.top
-  );
+  scratch(e);
  });
 
- canvas.addEventListener('pointermove',function(e){
+ canvas.addEventListener('pointermove',scratch);
+
+ canvas.addEventListener('pointerup',function(e){
+
   e.preventDefault();
 
-  if(e.buttons!==1)return;
+  try{
+   canvas.releasePointerCapture(e.pointerId);
+  }catch(err){}
 
-  const r=canvas.getBoundingClientRect();
-
-  borrar(
-   e.clientX-r.left,
-   e.clientY-r.top
-  );
  });
 
  scratchReady=true;
 }
+
 function finishMission(){
- if(!answers[1]){document.getElementById('routeStatus').textContent='Completa la Ruta 1 antes de terminar.';return}
- [2,3,4,5].forEach(n=>{answers[n]=document.getElementById('a'+n).value.trim()});
- const status=document.getElementById('routeStatus');status.textContent='Enviando respuestas...';
- document.getElementById('finishBtn').disabled=true;
- const payload={timestamp:new Date().toISOString(),ruta1:answers[1],ruta2:answers[2],ruta3:answers[3],ruta4:answers[4],liga:answers[5]};
- localStorage.setItem('anniversaryAnswers',JSON.stringify(payload));
- if(EMAIL_ENDPOINT.startsWith('http')){
-  fetch(EMAIL_ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
-   .then(()=>{status.innerHTML='<span class="ok">¡Respuestas enviadas! ❤️</span>';setTimeout(()=>go('loading'),900);setTimeout(()=>go('final1'),3000)})
-   .catch(()=>{status.innerHTML='<span class="error">No se pudo contactar al correo. Las respuestas quedaron guardadas en este dispositivo.</span>';document.getElementById('finishBtn').disabled=false});
- }else{
-  status.innerHTML='<span class="error">Falta configurar el correo. Las respuestas quedaron guardadas en este dispositivo.</span>';
-  document.getElementById('finishBtn').disabled=false;
+
+ if(!answers[1]){
+
+  document.getElementById('routeStatus').textContent=
+  'Completa la Ruta 1 antes de terminar.';
+
+  return;
+ }
+
+ const a2=document.getElementById('a2');
+ const a4=document.getElementById('a4');
+ const a5=document.getElementById('a5');
+
+ answers[2]=a2 ? a2.value.trim() : "";
+ answers[3]="";
+ answers[4]=a4 ? a4.value.trim() : "";
+ answers[5]=a5 ? a5.value.trim() : "";
+
+ const status=document.getElementById('routeStatus');
+
+ status.textContent='Guardando respuestas...';
+
+ const payload={
+  timestamp:new Date().toISOString(),
+  ruta1:answers[1],
+  ruta2:answers[2],
+  ruta3:answers[3],
+  ruta4:answers[4],
+  liga:answers[5]
+ };
+
+ localStorage.setItem(
+  'anniversaryAnswers',
+  JSON.stringify(payload)
+ );
+
+ status.innerHTML=
+ '<span class="ok">¡Respuestas guardadas! ❤️</span>';
+
+ setTimeout(()=>{
+  go('loading');
+ },900);
+
+ setTimeout(()=>{
+  go('final1');
+ },3000);
+}
+
+function makeBalls(){
+
+ const b=document.getElementById('balls');
+
+ if(!b)return;
+
+ b.innerHTML='';
+
+ for(let i=0;i<9;i++){
+
+  const x=document.createElement('button');
+
+  x.className='mini-poke';
+
+  x.setAttribute(
+   'aria-label',
+   'Pokébola '+(i+1)
+  );
+
+  x.onclick=function(){
+
+   document.getElementById('surprise').textContent=
+   'TE AMOOOO 🫂❤️';
+
+  };
+
+  b.appendChild(x);
  }
 }
-function makeBalls(){
- const b=document.getElementById('balls');b.innerHTML='';
- for(let i=0;i<9;i++){const x=document.createElement('button');x.className='mini-poke';x.setAttribute('aria-label','Pokébola '+(i+1));x.onclick=()=>{document.getElementById('surprise').textContent='TE AMOOOO 🫂❤️';};b.appendChild(x)}
-}
- makeBalls();
+
+makeBalls();
+ 
 </script>
 </body>
 </html>
